@@ -1,0 +1,38 @@
+﻿@using PlusSize.Models.ViewModels.Admin
+@model IEnumerable<AdminOrderVm>
+@{
+    Layout = null;
+}
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+
+@Html.Partial("_Header")
+@Html.Partial("_LeftMenu")
+<h2>Orders</h2><br />
+<div class="col-md-10">
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(vm => vm.DataAdded)</th>
+                <th>@Html.DisplayNameFor(vm => vm.SumTotal)</th>
+                <th>@Html.DisplayName("Action")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.Name</td>
+                    <td>@order.DataAdded</td>
+                    <td>@order.SumTotal</td>
+                    <td>@Html.ActionLink("View", "View", "Orders", new { id = order.Id }, null)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+    @Html.Partial("_Footer")

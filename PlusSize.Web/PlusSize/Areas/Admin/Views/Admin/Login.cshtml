@@ -1,0 +1,47 @@
+﻿@using PlusSize.Models.ViewModels.Account
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+@Html.Partial("_Header")
+ 
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <section id="loginForm">
+                @using (Html.BeginForm("Login","Admin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                    @Html.AntiForgeryToken()
+                    <h4>Please enter your login details.</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-sm chat-input", placeholder = "Email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control input-sm chat-input", placeholder = "Password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Log in" class="btn btn-primary btn-md" />
+                        </div>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</div>   
+@Html.Partial("_Footer")

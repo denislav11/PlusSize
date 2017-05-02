@@ -1,0 +1,51 @@
+﻿@using PlusSize.Models.ViewModels.Category
+@model CategoryVm
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <ul class="nav nav-pills nav-stacked accordion">
+                @foreach (var category in Model.AllCategories)
+                {
+                    <li role="presentation">
+                        @Html.ActionLink(category.Title, "Details", "Categories", new { name = category.Title },null)
+                    </li>
+                }
+            </ul>
+        </div>
+        @foreach (var product in Model.Products)
+        {
+            <div class="row">
+                <div class="image col-lg-3">
+                    <img src=@product.ImageUrl width="197" height="293"
+                         alt="">
+                </div>
+                <div class="name-desc col-lg-4">
+                    <div class="name">
+                        @Html.ActionLink(product.Title, "Details", "Products", new { id = product.Id }, null)
+                    </div>
+                    <div class="description">
+                        @product.ShortDescription
+                    </div>
+                    <div class="rating-reviews clearfix">
+                        <div class="rating">
+                            <i class="icon-star active"></i><i class="icon-star active"></i><i class="icon-star active"></i><i class="icon-star active"></i><i class="icon-star active"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions col-lg-2">
+                    <div>
+                        <div id="price">
+                            @product.Price
+                        </div>
+                        @Html.ActionLink("Buy", "Buy", "Products", product.Id, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+            <br />
+        }
+    </div>
+</div>

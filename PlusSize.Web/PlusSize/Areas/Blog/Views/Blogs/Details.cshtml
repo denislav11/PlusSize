@@ -1,0 +1,16 @@
+﻿@model PlusSize.Models.ViewModels.Blogs.DetailsBlogVm
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-8">
+    <p class="h1">@Model.Title</p>
+    <p class="lead">
+        by @Model.AuthorName
+    </p>
+    <p><span class="glyphicon glyphicon-time"></span> Posted on @Model.UploadDate</p>
+    <p class="lead">
+        @Model.Content
+    </p>
+    @Html.ActionLink("Back", "All", "Blogs", null, new { @class = "btn btn-primary" })  
+    <hr>
+</div>

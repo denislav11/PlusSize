@@ -1,0 +1,76 @@
+﻿@model IEnumerable<PlusSize.Models.ViewModels.Products.ProductsAdminVm>
+
+@{
+    Layout = null;
+    ViewBag.Title = "Products";
+}
+@Html.Partial("_Header")
+
+@Html.Partial("_LeftMenu")
+<h2>Products</h2>
+
+<div class="col-lg-offset-11">
+    @Html.ActionLink("Add", "Add", "Products", null, new { @class = "btn btn-primary" })
+</div>
+<br />
+<div class="row">
+    <div class="col-md-9">
+        <div class="content-box-large">
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ImageUrl)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Model)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CategoryTitle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayName("Action")
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="@item.ImageUrl" height="40" width="40" style="padding: 1px; border: 1px solid #DDDDDD;">
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Model)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CategoryTitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+            @Html.Partial("_Footer")

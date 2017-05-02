@@ -1,0 +1,75 @@
+﻿@model PlusSize.Models.ViewModels.Products.ProductVm
+
+@Styles.Render("~/Content/Products/Product.css")
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 item-photo">
+            <img style="max-width:100%;" src="@Model.ImageUrl" width="475" height="712" />
+        </div>
+        <div class="col-xs-5" style="border:0px solid gray">
+
+            <h3>@Model.Title</h3>
+
+            <h6 class="title-price"><small>Price</small></h6>
+            <h3 style="margin-top:0px;">$@Model.Price</h3>
+
+
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("Buy", "Account", FormMethod.Post))
+                {
+                    <br /><br />
+                    @*<div class="col-lg-6">
+                        <div class="input-group number-spinner">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+                            </span>
+                            <input type="text" name="quantity" class="form-control text-center" value="1">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+                            </span>
+                        </div>
+                    </div>*@
+                    <input type="hidden" name="id" value=@Model.Id>
+                    <div class="section" style="padding-bottom:20px;">
+                        <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add To Cart</button>
+                        <h6><a href="#"><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span> Add To Cart</a></h6>
+                    </div>
+                }
+            }
+
+        </div>
+        <div class="col-xs-9">
+            <ul class="menu-items">
+                <li class="active">Description</li>
+            </ul>
+            <div style="width:100%;border-top:1px solid silver">
+                <p style="padding:15px;">
+                  <p>@Model.Description</p>                
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).on('click', '.number-spinner button', function () {
+            var btn = $(this),
+                oldValue = btn.closest('.number-spinner').find('input').val().trim(),
+                newVal = 0;
+
+            if (btn.attr('data-dir') == 'up') {
+                newVal = parseInt(oldValue) + 1;
+            } else {
+                if (oldValue > 1) {
+                    newVal = parseInt(oldValue) - 1;
+                } else {
+                    newVal = 1;
+                }
+            }
+            btn.closest('.number-spinner').find('input').val(newVal);
+        });
+    </script>
+}

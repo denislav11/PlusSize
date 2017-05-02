@@ -1,0 +1,76 @@
+﻿@using PlusSize.Models.ViewModels.Blogs
+@model BlogVm
+@{
+    ViewBag.Title = "All";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Blog Home</title>
+    <link href="~/Content/blog-home.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-8">
+            <img src="~/Images/blog.jpg" alt="Blog" />
+        </div>
+
+        <div class="col-md-4">
+            @using (Html.BeginForm("Search", "Blogs", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+            {
+                <div class="well">
+                    <div class="form-group">
+                        <input type="text" name="title" class="form-control" placeholder="Search">
+                    </div>
+                    <button class="btn btn-default" type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                    </div>
+                    }
+                    <div class="well">
+                        <h4>Blog Categories</h4>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul class="list-unstyled">
+                                    @foreach (var category in Model.Categories)
+                                    {
+                                        <li>
+                                            @Html.ActionLink(category.Title, "AllBlogs", "BlogsCategories", new { id = category.Id }, null)
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+        <div class="row">
+
+            @foreach (var blog in Model.Blogs)
+            {
+                <div class="col-md-8">
+                    <h2>
+                        @Html.ActionLink(blog.Title, "Details", "Blogs", new { id = blog.Id }, null)
+                    </h2>
+                    <p class="lead">
+                        by @blog.AuthorName
+                    </p>
+                    <p><span class="glyphicon glyphicon-time"></span> Posted on @blog.UploadDate</p>
+
+                    <p class="lead">
+                        @blog.ShortContent
+                    </p>
+                    @Html.ActionLink("Read more", "Details", "Blogs", new { id = blog.Id }, new { @class = "btn btn-primary" })
+                </div>
+
+            }
+        </div>
+    </div>
+</body>
+</html>

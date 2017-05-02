@@ -1,0 +1,39 @@
+﻿@using PlusSize.Models.ViewModels.Category
+@model IEnumerable<ProductCategoryVm>
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+@foreach (var product in Model)
+{
+    <div class="row">
+        <div class="image col-lg-3">
+            <img src=@product.ImageUrl width="197" height="293"
+                 alt="">
+        </div>
+        <div class="name-desc col-lg-4">
+            <div class="name">
+                @Html.ActionLink(product.Title, "Details", "Products", product.Id)
+            </div>
+            <div class="description">
+                @product.ShortDescription
+            </div>
+            <div class="rating-reviews clearfix">
+                <div class="rating">
+                    <i class="icon-star active"></i><i class="icon-star active"></i><i class="icon-star active"></i><i class="icon-star active"></i><i class="icon-star active"></i>
+                </div>
+            </div>
+        </div>
+        <div class="actions col-lg-2">
+            <div>
+                <div id="price">
+                    @product.Price
+                </div>
+                @Html.ActionLink("Buy", "Buy", "Products", product.Id, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+    <br />
+}

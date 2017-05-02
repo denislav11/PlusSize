@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PlusSize.Models.ViewModels.Admin.AdminAllBlogsVm>
+
+@{
+    Layout = null;
+    ViewBag.Title = "Blogs";
+}
+@Html.Partial("_Header")
+
+@Html.Partial("_LeftMenu")
+<h2>Blogs</h2>
+
+<div class="col-lg-offset-11">
+    @Html.ActionLink("Add", "Add", "Blogs", null, new { @class = "btn btn-primary" })
+</div>
+<br />
+<div class="row">
+    <div class="col-md-9">
+        <div class="content-box-large">
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AuthorName)
+                    </th>
+                    <th>
+                        @Html.DisplayName("Action")
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AuthorName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+@Html.Partial("_Footer")
