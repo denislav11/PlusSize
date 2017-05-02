@@ -1,13 +1,16 @@
 ﻿using AutoMapper;
+using PlusSize.Data;
 using PlusSize.Models.EntityModels;
 using PlusSize.Models.ViewModels.Admin;
 using PlusSize.Models.ViewModels.Blogs;
 using PlusSize.Models.ViewModels.Category;
 using PlusSize.Models.ViewModels.Home;
 using PlusSize.Models.ViewModels.Products;
+using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using PlusSize.Data.Migrations;
 
 namespace PlusSize
 {
@@ -16,6 +19,8 @@ namespace PlusSize
         protected void Application_Start()
         {
             ConfigMapper();
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<PlusSizeContext,Configuration>());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

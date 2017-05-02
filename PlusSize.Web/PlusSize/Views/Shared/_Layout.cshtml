@@ -63,7 +63,7 @@
                             </div>
                         </li>
                         <li>
-                            @Html.ActionLink("Blogs", "All", "Blogs", null, null)
+                            @Html.ActionLink("Blogs", "All", "Blogs", new { area="Blog"}, null)
                         </li>
                     </ul>
                     @using (Html.BeginForm("Search", "Products", FormMethod.Post, new { @class = "navbar-form navbar-left" }))

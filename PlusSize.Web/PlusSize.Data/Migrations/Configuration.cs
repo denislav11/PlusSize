@@ -3,7 +3,7 @@ namespace PlusSize.Data.Migrations
     using Models.EntityModels;
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<PlusSize.Data.PlusSizeContext>
+    public sealed class Configuration : DbMigrationsConfiguration<PlusSizeContext>
     {
         public Configuration()
         {
