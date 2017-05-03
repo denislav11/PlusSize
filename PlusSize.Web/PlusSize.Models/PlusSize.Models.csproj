@@ -156,10 +156,10 @@
     <Compile Include="ViewModels\Blogs\AllBlogsVm.cs" />
     <Compile Include="ViewModels\Blogs\BlogVm.cs" />
     <Compile Include="ViewModels\Blogs\DetailsBlogVm.cs" />
+    <Compile Include="ViewModels\Cart\CartRemvoeVm.cs" />
     <Compile Include="ViewModels\Category\CategoryVm.cs" />
     <Compile Include="ViewModels\Category\AllCategoriesVm.cs" />
     <Compile Include="ViewModels\Category\ProductCategoryVm.cs" />
-    <Compile Include="ViewModels\Checkout\CheckoutVm.cs" />
     <Compile Include="ViewModels\Home\ProductInHomeVm.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />

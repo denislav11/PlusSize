@@ -24,8 +24,8 @@ namespace PlusSize.Controllers
             var strCurrentUserId = User.Identity.GetUserId();
             Cart currnetCart = this.service.GetCart(strCurrentUserId);
             if (currnetCart == null || currnetCart.Products.Count == 0)
-            {
-                return this.RedirectToAction("Empty");
+            {   
+                return this.Redirect("/cart/empty");
             }
             return View(currnetCart);
         }
@@ -54,16 +54,9 @@ namespace PlusSize.Controllers
         }
 
         [HttpGet]
-        [Route("Empty")]
-        public ActionResult Empty()
-        {
-            return this.View();
-        }
-        [HttpGet]
         public ActionResult Success()
         {
             return this.View();
         }
-
     }
 }

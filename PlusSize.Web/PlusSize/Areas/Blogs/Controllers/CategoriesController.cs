@@ -3,16 +3,18 @@ using PlusSize.Services;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace PlusSize.Controllers
+namespace PlusSize.Areas.Blogs.Controllers
 {
-    public class BlogsCategoriesController : Controller
+    [RouteArea("blogs")]
+    [RoutePrefix("categories")]
+    public class CategoriesController : Controller
     {
         private BlogsService service;
-        public BlogsCategoriesController()
+        public CategoriesController()
         {
             this.service = new BlogsService();
         }
-        // GET: BlogsCategories
+
         [Route("{id:int}/blogs")]
         [HttpGet]
         public ActionResult AllBlogs(int id)

@@ -2,13 +2,13 @@
 
 namespace PlusSize.Areas.Blog
 {
-    public class BlogAreaRegistration : AreaRegistration 
+    public class BlogsAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "Blog";
+                return "Blogs";
             }
         }
 
@@ -17,7 +17,7 @@ namespace PlusSize.Areas.Blog
             context.Routes.MapMvcAttributeRoutes();
             context.MapRoute(
                 "Blog_default",
-                "Blog/{controller}/{action}/{id}",
+                "Blogs/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

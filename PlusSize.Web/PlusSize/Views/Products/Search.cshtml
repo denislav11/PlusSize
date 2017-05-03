@@ -3,9 +3,7 @@
 @{
     ViewBag.Title = "Search";
 }
-
 <h2>Search</h2>
-
 @foreach (var product in Model)
 {
     <div class="row">
@@ -15,7 +13,7 @@
         </div>
         <div class="name-desc col-lg-4">
             <div class="name">
-                @Html.ActionLink(product.Title, "Details", "Products", product.Id)
+                @Html.ActionLink(product.Title, "Details", "Products", new { id = product.Id }, null)
             </div>
             <div class="description">
                 @product.ShortDescription
@@ -31,7 +29,17 @@
                 <div id="price">
                     @product.Price
                 </div>
-                @Html.ActionLink("Buy", "Buy", "Products", product.Id, new { @class = "btn btn-primary" })
+                @if (Request.IsAuthenticated)
+                {
+                    using (Html.BeginForm("Buy", "Account", FormMethod.Post))
+                    {
+                        <br />
+                        <input type="hidden" name="id" value=@product.Id>
+                        <div class="section" style="padding-bottom:20px;">
+                            <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add To Cart</button>
+                        </div>
+                    }
+                }
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 namespace PlusSize.Controllers
 {
     [RoutePrefix("categories")]
+
     public class CategoriesController : Controller
     {
         private CategoryService service;

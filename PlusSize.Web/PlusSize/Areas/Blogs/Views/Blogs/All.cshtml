@@ -20,15 +20,7 @@
             <img src="~/Images/blog.jpg" alt="Blog" />
         </div>
         <div class="col-md-4">
-            @using (Html.BeginForm("Search", "Blogs", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
-            {
-                <div class="form-group">
-                    <input type="text" name="title" class="form-control" placeholder="Search">
-                </div>
-                <button class="btn btn-default" type="button">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-            }
+            @Html.Partial("_Search")
             <div class="well">
                 <h4>Blog Categories</h4>
                 <div class="row">
@@ -37,7 +29,7 @@
                             @foreach (var category in Model.Categories)
                             {
                                 <li>
-                                    @Html.ActionLink(category.Title, "AllBlogs", "BlogsCategories", new { id = category.Id }, null)
+                                    @Html.ActionLink(category.Title, "AllBlogs", "Categories", new { id = category.Id }, null)
                                 </li>
                             }
                         </ul>
@@ -47,7 +39,6 @@
             <hr>
         </div>
         <div class="row">
-
             @foreach (var blog in Model.Blogs)
             {
                 <div class="col-md-8">
@@ -58,7 +49,6 @@
                         by @blog.AuthorName
                     </p>
                     <p><span class="glyphicon glyphicon-time"></span> Posted on @blog.UploadDate</p>
-
                     <p class="lead">
                         @blog.ShortContent
                     </p>
@@ -67,6 +57,7 @@
 
             }
         </div>
+        <br />
     </div>
 </body>
 </html>

@@ -3,9 +3,9 @@ using PlusSize.Services;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace PlusSize.Controllers
+namespace PlusSize.Areas.Blogs.Controllers
 {
-    [RouteArea("blog")]
+    [RouteArea("blogs")]
     public class BlogsController : Controller
     {
         private BlogsService service;
@@ -37,7 +37,7 @@ namespace PlusSize.Controllers
         }
 
         [HttpPost]
-        [Route("{title}")]
+        [Route("blogs/{title}")]
         public ActionResult Search(string title)
         {
             IEnumerable<AllBlogsVm> blogs = this.service.GetBlogsByTitle(title);

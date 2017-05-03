@@ -1,0 +1,11 @@
+﻿@using (Html.BeginForm("Search", "Blogs", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+ {
+    <div class="well">
+        <div class="form-group">
+            <input type="text" name="title" class="form-control" placeholder="Search">
+        </div>
+        <button class="btn btn-default" type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+        </button>
+    </div>
+}

@@ -7,7 +7,6 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-
 </head>
 <body>
     <header>
@@ -22,7 +21,6 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="/home/index"><img src="~/Images/plusSize-logo.png"></a>
-
                 </div>
                 <div class="navbar-collapse style= collapse in">
                     <ul class="nav navbar-nav">
@@ -34,17 +32,16 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="kids">
                                             <ul class="nav-list list-inline">
-                                                <li>@Html.ActionLink("Tops", "Details", "Categories", new { name = "Tops" }, null)</li>
-                                                <li>@Html.ActionLink("Shirts", "Details", "Categories", new { name = "Shirts" }, null)</li>
-                                                <li>@Html.ActionLink("Jeans", "Details", "Categories", new { name = "Jeans" }, null)</li>
-                                                <li>@Html.ActionLink("Shorts", "Details", "Categories", new { name = "Shorts" }, null)</li>
-                                                <li>@Html.ActionLink("Skirts", "Details", "Categories", new { name = "Skirts" }, null)</li>
+                                                <li>@Html.ActionLink("Tops", "Details", "Categories", new { area = "" }, new { name = "Tops" })</li>
+                                                <li>@Html.ActionLink("Shirts", "Details", "Categories", new { area = "" }, new { name = "Shirts" })</li>
+                                                <li>@Html.ActionLink("Jeans", "Details", "Categories", new { area = "" }, new { name = "Jeans" })</li>
+                                                <li>@Html.ActionLink("Shorts", "Details", "Categories", new { area = "" }, new { name = "Shorts" })</li>
+                                                <li>@Html.ActionLink("Skirts", "Details", "Categories", new { area = "" }, new { name = "Skirts" })</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         <li class="dropdown mega-dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-space-shuttle"></i> Information <span class="caret"></span></a>
                             <div id="filters" class="dropdown-menu mega-dropdown-menu">
@@ -53,9 +50,9 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="kids">
                                             <ul class="nav-list list-inline">
-                                                <li>@Html.ActionLink("Delivery", "Details", "Categories", new { name = "Tops" }, null)</li>
-                                                <li>@Html.ActionLink("About Us", "Details", "Categories", new { name = "Shirts" }, null)</li>
-                                                <li>@Html.ActionLink("Contact Us", "Details", "Categories", new { name = "Jeans" }, null)</li>
+                                                <li>@Html.ActionLink("Delivery", "Details", "Categories", new { area = "" }, new { name = "Tops" })</li>
+                                                <li>@Html.ActionLink("About Us", "Details", "Categories", new { area = "" }, new { name = "Shirts" })</li>
+                                                <li>@Html.ActionLink("Contact Us", "Details", "Categories", new { area = "" }, new { name = "Jeans" })</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -63,10 +60,11 @@
                             </div>
                         </li>
                         <li>
-                            @Html.ActionLink("Blogs", "All", "Blogs", new { area="Blog"}, null)
+                            @Html.ActionLink("Blogs", "All", "Blogs", new { area = "Blogs" }, null)
+
                         </li>
                     </ul>
-                    @using (Html.BeginForm("Search", "Products", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+                    @using (Html.BeginForm("Search", "Products", new { area = "" }, FormMethod.Post, new { @class = "navbar-form navbar-left" }))
                     {
                         <div class="form-group">
                             <input type="text" name="title" class="form-control" placeholder="Search">
@@ -77,35 +75,18 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-
     </header>
-
+    <br />
+    <br />
     <div class="container body-content">
         @RenderBody()
-        <hr />
-
-
-        <div class="custom-footer full-width">
-            <div class="background-custom-footer"></div>
-            <div class="background">
-                <div class="shadow"></div>
-                <div class="pattern">
-                    <div class="container">
-
-                        <div class="row">
-                            @Html.Partial("_FooterPartial")
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div>
+    @Html.Partial("_FooterPartial")
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
 </body>
 </html>

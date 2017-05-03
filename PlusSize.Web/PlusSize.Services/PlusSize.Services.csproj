@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="AdminService.cs" />
     <Compile Include="BlogsService.cs" />
+    <Compile Include="CartService.cs" />
     <Compile Include="CategoryService.cs" />
     <Compile Include="CheckoutService.cs" />
     <Compile Include="HomeService.cs" />

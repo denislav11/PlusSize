@@ -199,7 +199,8 @@ Logo by Sneaker-mission.com (http://www.sneaker-mission.com/)
 }
 .nav-list > li {
     padding: 20px 15px 15px;
-    border-left:0px;
+    border-left: 0px;
+}
 .nav-list {
     border-bottom: 0px;
 }
