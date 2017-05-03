@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PlusSize.Models.ViewModels.Cart
+﻿namespace PlusSize.Models.ViewModels.Cart
 {
     public class CartRemvoeVm
     {

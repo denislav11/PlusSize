@@ -1,11 +1,11 @@
 ﻿using PlusSize.Models.EntityModels;
 using System.Linq;
-using System;
 using Microsoft.AspNet.Identity.EntityFramework;
+using PlusSize.Services.Interfaces;
 
 namespace PlusSize.Services
 {
-    public class UserService : Service
+    public class UserService : Service,IUserService
     {
         public void Buy(int id, string strCurrentUserId)
         {

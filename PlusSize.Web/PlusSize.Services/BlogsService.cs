@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using PlusSize.Models.EntityModels;
 using PlusSize.Models.ViewModels.Blogs;
+using PlusSize.Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace PlusSize.Services
 {
-    public class BlogsService : Service
+    public class BlogsService : Service, IBlogsService
     {
         public IEnumerable<AllBlogsVm> GetAllBlogs()
         {

@@ -2,10 +2,11 @@
 using System.Linq;
 using PlusSize.Models.BindingModels.Checkout;
 using PlusSize.Models.EntityModels;
+using PlusSize.Services.Interfaces;
 
 namespace PlusSize.Services
 {
-    public class CheckoutService : Service
+    public class CheckoutService : Service,ICheckoutService
     {
         public Cart GetCart(string strCurrentUserId)
         {

@@ -2,6 +2,7 @@
 using PlusSize.Models.ViewModels.Account;
 using PlusSize.Models.ViewModels.Admin;
 using PlusSize.Services;
+using PlusSize.Services.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
@@ -11,15 +12,14 @@ namespace PlusSize.Areas.Admin.Controllers
 {
     [RouteArea("admin")]
     [Authorize(Roles = "Admin")]
-
     public class AdminController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private AdminService service;
-        public AdminController()
+        private IAdminService service;
+        public AdminController(IAdminService service)
         {
-            this.service = new AdminService();
+            this.service = service;
         }
 
         public AdminController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)

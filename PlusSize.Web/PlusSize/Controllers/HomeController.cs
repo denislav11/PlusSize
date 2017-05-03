@@ -1,5 +1,6 @@
 ﻿using PlusSize.Models.ViewModels.Home;
 using PlusSize.Services;
+using PlusSize.Services.Interfaces;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -7,10 +8,10 @@ namespace PlusSize.Controllers
 {
     public class HomeController : Controller
     {
-        private HomeService homeService;
-        public HomeController()
+        private IHomeService homeService;
+        public HomeController(IHomeService homeService)
         {
-            this.homeService = new HomeService();
+            this.homeService = homeService;
 
         }
         public ActionResult Index()
@@ -33,6 +34,6 @@ namespace PlusSize.Controllers
 
             return View();
         }
-     
+
     }
 }

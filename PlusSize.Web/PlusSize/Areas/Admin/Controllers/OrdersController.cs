@@ -1,5 +1,6 @@
 ﻿using PlusSize.Models.ViewModels.Admin;
 using PlusSize.Services;
+using PlusSize.Services.Interfaces;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -9,10 +10,10 @@ namespace PlusSize.Areas.Admin.Controllers
     [RoutePrefix("orders")]
     public class OrdersController : Controller
     {
-        private AdminService service;
-        public OrdersController()
+        private IAdminService service;
+        public OrdersController(IAdminService service)
         {
-            this.service = new AdminService();
+            this.service = service;
         }
 
         [HttpGet]

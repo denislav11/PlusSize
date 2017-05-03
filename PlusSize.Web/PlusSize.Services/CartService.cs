@@ -1,13 +1,11 @@
 ﻿using PlusSize.Models.EntityModels;
+using PlusSize.Services.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PlusSize.Services
 {
-    public class CartService : Service
+    public class CartService : Service,ICartService
     {
         public Cart GetCart(string strCurrentUserId)
         {

@@ -4,10 +4,11 @@ using PlusSize.Models.ViewModels.Products;
 using System.Collections.Generic;
 using System.Linq;
 using PlusSize.Models.ViewModels.Category;
+using PlusSize.Services.Interfaces;
 
 namespace PlusSize.Services
 {
-    public class ProductsService : Service
+    public class ProductsService : Service,IProductsService
     {
         public ProductVm GetProductById(int id)
         {

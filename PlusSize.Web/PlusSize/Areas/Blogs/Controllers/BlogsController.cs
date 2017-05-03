@@ -1,5 +1,6 @@
 ﻿using PlusSize.Models.ViewModels.Blogs;
 using PlusSize.Services;
+using PlusSize.Services.Interfaces;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -8,10 +9,10 @@ namespace PlusSize.Areas.Blogs.Controllers
     [RouteArea("blogs")]
     public class BlogsController : Controller
     {
-        private BlogsService service;
-        public BlogsController()
+        private IBlogsService service;
+        public BlogsController(IBlogsService service)
         {
-            this.service = new BlogsService();
+            this.service = service;
         }
 
         [Route]

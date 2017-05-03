@@ -7,10 +7,11 @@ using PlusSize.Models.BindingModels.Admin;
 using PlusSize.Models.ViewModels.Category;
 using PlusSize.Models.ViewModels.Admin;
 using System;
+using PlusSize.Services.Interfaces;
 
 namespace PlusSize.Services
 {
-    public class AdminService : Service
+    public class AdminService : Service, IAdminService
     {
         public IEnumerable<ProductsAdminVm> GetAllProducts()
         {
@@ -209,6 +210,6 @@ namespace PlusSize.Services
             return vms;
         }
 
-        
+
     }
 }

@@ -1,9 +1,5 @@
 namespace PlusSize.Data.Migrations
 {
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using Models.EntityModels;
-    using System;
     using System.Data.Entity.Migrations;
 
     public sealed class Configuration : DbMigrationsConfiguration<PlusSizeContext>

@@ -2,10 +2,8 @@
 using PlusSize.Models.EntityModels;
 using PlusSize.Models.ViewModels.Cart;
 using PlusSize.Services;
-using System;
-using System.Collections.Generic;
+using PlusSize.Services.Interfaces;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace PlusSize.Controllers
@@ -14,10 +12,10 @@ namespace PlusSize.Controllers
     [RoutePrefix("cart")]
     public class CartController : Controller
     {
-        private CartService service;
-        public CartController()
+        private ICartService service;
+        public CartController(ICartService service)
         {
-            this.service = new CartService();
+            this.service = service;
         }
 
         [Route]

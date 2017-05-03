@@ -2,6 +2,7 @@
 using PlusSize.Models.BindingModels.Checkout;
 using PlusSize.Models.EntityModels;
 using PlusSize.Services;
+using PlusSize.Services.Interfaces;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web.Mvc;
@@ -12,10 +13,10 @@ namespace PlusSize.Controllers
     [Authorize]
     public class CheckoutController : Controller
     {
-        private CheckoutService service;
-        public CheckoutController()
+        private ICheckoutService service;
+        public CheckoutController(ICheckoutService service)
         {
-            this.service = new CheckoutService();
+            this.service = service;
         }
         [HttpGet]
         [Route]
@@ -24,7 +25,7 @@ namespace PlusSize.Controllers
             var strCurrentUserId = User.Identity.GetUserId();
             Cart currnetCart = this.service.GetCart(strCurrentUserId);
             if (currnetCart == null || currnetCart.Products.Count == 0)
-            {   
+            {
                 return this.Redirect("/cart/empty");
             }
             return View(currnetCart);

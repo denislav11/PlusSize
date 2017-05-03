@@ -2,22 +2,42 @@
             {
                 using (Html.BeginForm("Buy", "Account", FormMethod.Post))
                 {
-        <br /><br />
-        @*<div class="col-lg-6">
-                <div class="input-group number-spinner">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
-                    </span>
-                    <input type="text" name="quantity" class="form-control text-center" value="1">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
-                    </span>
-                </div>
-            </div>*@
-        <input type="hidden" name="id" value=@Model.Id>
-        <div class="section" style="padding-bottom:20px;">
-            <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add To Cart</button>
-            <h6><a href="#"><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span> Add To Cart</a></h6>
-        </div>
+        @*<br /><br />
+            <div class="col-lg-6">
+                    <div class="input-group number-spinner">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+                        </span>
+                        <input type="text" name="quantity" class="form-control text-center" value="1">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+                        </span>
+                    </div>
+                </div>*@    <br /><br />
+            <input type="hidden" name="id" value=@Model.Id>
+            <div class="section" style="padding-bottom:20px;">
+                <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add To Cart</button>
+
+            </div>
     }
 }
+            @*@section scripts{
+                    <script>
+                        $(document).on('click', '.number-spinner button', function () {
+                            var btn = $(this),
+                                oldValue = btn.closest('.number-spinner').find('input').val().trim(),
+                                newVal = 0;
+
+                            if (btn.attr('data-dir') == 'up') {
+                                newVal = parseInt(oldValue) + 1;
+                            } else {
+                                if (oldValue > 1) {
+                                    newVal = parseInt(oldValue) - 1;
+                                } else {
+                                    newVal = 1;
+                                }
+                            }
+                            btn.closest('.number-spinner').find('input').val(newVal);
+                        });
+                    </script>
+                }*@

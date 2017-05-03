@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using PlusSize.Services;
 using PlusSize.Models.ViewModels.Admin;
 using PlusSize.Models.BindingModels.Admin;
+using PlusSize.Services.Interfaces;
 
 namespace PlusSize.Areas.Admin.Controllers
 {
@@ -11,11 +12,11 @@ namespace PlusSize.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class CategoriesController : Controller
     {
-        private AdminService service;
+        private IAdminService service;
 
-        public CategoriesController()
+        public CategoriesController(IAdminService service)
         {
-            this.service = new AdminService();
+            this.service = service;
         }
 
         // GET: AdminCategories

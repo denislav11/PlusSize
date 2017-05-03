@@ -1,5 +1,6 @@
 ﻿using PlusSize.Models.ViewModels.Category;
 using PlusSize.Services;
+using PlusSize.Services.Interfaces;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -9,11 +10,12 @@ namespace PlusSize.Controllers
 
     public class CategoriesController : Controller
     {
-        private CategoryService service;
-        public CategoriesController()
+        private ICategoryService service;
+        public CategoriesController(ICategoryService service)
         {
-            this.service = new CategoryService();
+            this.service = service;
         }
+
         [HttpGet]
         [Route]
         [Route("all")]
@@ -21,6 +23,7 @@ namespace PlusSize.Controllers
         {
             return View();
         }
+
         [HttpGet]
         [Route("{name}")]
         public ActionResult Details(string name)

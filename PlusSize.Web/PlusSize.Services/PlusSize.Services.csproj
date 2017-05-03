@@ -67,6 +67,14 @@
     <Compile Include="CategoryService.cs" />
     <Compile Include="CheckoutService.cs" />
     <Compile Include="HomeService.cs" />
+    <Compile Include="Interfaces\IAdminService.cs" />
+    <Compile Include="Interfaces\ICartService.cs" />
+    <Compile Include="Interfaces\IBlogsService.cs" />
+    <Compile Include="Interfaces\ICategoryService.cs" />
+    <Compile Include="Interfaces\ICheckoutService.cs" />
+    <Compile Include="Interfaces\IHomeService.cs" />
+    <Compile Include="Interfaces\IProductsService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="ProductsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service.cs" />
@@ -86,6 +94,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

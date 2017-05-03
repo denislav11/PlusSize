@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using PlusSize.Models.ViewModels.Admin;
 using PlusSize.Models.BindingModels.Admin;
 using System.Data.Entity.Validation;
+using PlusSize.Services.Interfaces;
 
 namespace PlusSize.Areas.Admin.Controllers
 {
@@ -17,14 +18,14 @@ namespace PlusSize.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class BlogsController : Controller
     {
-        private AdminService service;
-        private BlogsService blogService;
+        private IAdminService service;
+        private IBlogsService blogService;
         private ApplicationUserManager _userManager;
 
-        public BlogsController()
+        public BlogsController(IAdminService service, IBlogsService blogService)
         {
-            this.service = new AdminService();
-            this.blogService = new BlogsService();
+            this.service = service;
+            this.blogService = blogService;
         }
         public BlogsController(ApplicationUserManager userManager)
         {
@@ -113,7 +114,7 @@ namespace PlusSize.Areas.Admin.Controllers
                 EditBlogVm vm = this.service.GetBlogById(id);
                 return this.View(vm);
             }
-           
+
         }
         [HttpGet]
         [Route("delete/{id:int}")]

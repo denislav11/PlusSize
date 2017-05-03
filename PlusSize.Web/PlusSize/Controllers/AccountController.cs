@@ -8,6 +8,7 @@ using Microsoft.Owin.Security;
 using PlusSize.Models.ViewModels.Account;
 using PlusSize.Models.EntityModels;
 using PlusSize.Services;
+using PlusSize.Services.Interfaces;
 
 namespace PlusSize.Controllers
 {
@@ -16,18 +17,17 @@ namespace PlusSize.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private UserService service;
+        private IUserService service;
 
-        public AccountController()
+        public AccountController(IUserService service)
         {
-            this.service = new UserService();
+            this.service = service;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
-            this.service = new UserService();
         }
 
         public ApplicationSignInManager SignInManager
@@ -105,6 +105,10 @@ namespace PlusSize.Controllers
         [Authorize]
         public ActionResult Buy(int id)
         {
+            if (!this.ModelState.IsValid)
+            {
+                throw new HttpException(404, "");
+            }
             var strCurrentUserId = User.Identity.GetUserId();
             this.service.Buy(id, strCurrentUserId);
             return Redirect("/checkout");
@@ -122,10 +126,6 @@ namespace PlusSize.Controllers
                 return View(model);
             }
 
-            // The following code protects for brute force attacks against the two factor codes. 
-            // If a user enters incorre ct codes for a specified amount of time then the user account 
-            // will be locked out for a specified amount of time. 
-            // You can configure the account lockout settings in IdentityConfig
             var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {

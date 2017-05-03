@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using PlusSize.Models.EntityModels;
 using PlusSize.Models.ViewModels.Category;
+using PlusSize.Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace PlusSize.Services
 {
-    public class CategoryService : Service
+    public class CategoryService : Service,ICategoryService
     {
         public IEnumerable<ProductCategoryVm> GetProductsFromCategory(string name)
         {
