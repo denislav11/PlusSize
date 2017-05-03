@@ -18,13 +18,13 @@ namespace PlusSize
     {
         protected void Application_Start()
         {
-            ConfigMapper();
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<PlusSizeContext,Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<PlusSizeContext, Configuration>());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ConfigMapper();
         }
 
         private void ConfigMapper()

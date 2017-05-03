@@ -1,5 +1,7 @@
 ﻿using PlusSize.Models.EntityModels;
 using System.Linq;
+using System;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace PlusSize.Services
 {
@@ -21,6 +23,17 @@ namespace PlusSize.Services
             }
             cart.Products.Add(product);
             this.Context.SaveChanges();
+        }
+
+        public bool IsFirstUser(ApplicationUser user)
+        {
+            if (this.Context.Users.Count() == 1)
+            {
+                this.Context.Roles.Add(new IdentityRole { Name = "Admin" });
+                this.Context.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }
