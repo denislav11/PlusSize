@@ -59,10 +59,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201704150619559_InitialCreate.cs" />
-    <Compile Include="Migrations\201704150619559_InitialCreate.Designer.cs">
-      <DependentUpon>201704150619559_InitialCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlusSizeContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,11 +74,6 @@
       <Project>{E1ECDBAC-2016-4153-AA08-B0F2B2DDBF15}</Project>
       <Name>PlusSize.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704150619559_InitialCreate.resx">
-      <DependentUpon>201704150619559_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,9 @@
 namespace PlusSize.Data.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Models.EntityModels;
+    using System;
     using System.Data.Entity.Migrations;
 
     public sealed class Configuration : DbMigrationsConfiguration<PlusSizeContext>
@@ -13,18 +16,16 @@ namespace PlusSize.Data.Migrations
 
         protected override void Seed(PlusSizeContext context)
         {
+            var roleManager = new RoleManager<IdentityRole>(
+                new RoleStore<IdentityRole>(new PlusSizeContext()));
 
-            //var roleManager = new RoleManager<IdentityRole>(
-            //    new RoleStore<IdentityRole>(new PlusSizeContext()));
-
-
-            //var roleCreateResult = roleManager.Update(new IdentityRole("Admin"));
-
-            //if (!roleCreateResult.Succeeded)
-            //{
-            //    throw new Exception(string.Join("; ", roleCreateResult.Errors));
-            //}
+            var roleCreateResult = roleManager.Update(new IdentityRole("Admin"));
                 
+            if (!roleCreateResult.Succeeded)
+            {
+                throw new Exception(string.Join("; ", roleCreateResult.Errors));
+            }
+
             context.Products.AddOrUpdate(ent => ent.Title,
             new Product[]
             {
