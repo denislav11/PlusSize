@@ -1,6 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PlusSize.Controllers;
-using TestStack.FluentMVCTesting;
 
 namespace PlusSize.Tests.Controllers
 {

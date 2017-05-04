@@ -1,7 +1,8 @@
 ﻿using PlusSize.Models.ViewModels.Blogs;
-using PlusSize.Services;
 using PlusSize.Services.Interfaces;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace PlusSize.Areas.Admin.Controllers
@@ -38,8 +39,18 @@ namespace PlusSize.Areas.Admin.Controllers
             {
                 return View(bm);
             }
-            this.service.AddCategory(bm);
-            return RedirectToAction("all");
+            try
+            {
+                this.service.AddCategory(bm);
+                return RedirectToAction("all");
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var error = ex.EntityValidationErrors.First().ValidationErrors.First();
+                this.ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                return this.View();
+            }
+
         }
         [HttpGet]
         [Route("edit/{id:int}")]

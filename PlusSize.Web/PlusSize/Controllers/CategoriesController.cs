@@ -1,5 +1,4 @@
 ﻿using PlusSize.Models.ViewModels.Category;
-using PlusSize.Services;
 using PlusSize.Services.Interfaces;
 using System.Collections.Generic;
 using System.Web.Mvc;

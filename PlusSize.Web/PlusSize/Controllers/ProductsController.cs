@@ -1,7 +1,6 @@
 ﻿using PlusSize.Models.BindingModels.Products;
 using PlusSize.Models.ViewModels.Category;
 using PlusSize.Models.ViewModels.Products;
-using PlusSize.Services;
 using PlusSize.Services.Interfaces;
 using System;
 using System.Collections.Generic;

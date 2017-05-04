@@ -4,12 +4,12 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using PlusSize.Services;
 using System.Collections.Generic;
 using PlusSize.Models.ViewModels.Admin;
 using PlusSize.Models.BindingModels.Admin;
 using System.Data.Entity.Validation;
 using PlusSize.Services.Interfaces;
+using PlusSize.Services.Interfaces.Admin;
 
 namespace PlusSize.Areas.Admin.Controllers
 {
@@ -18,11 +18,11 @@ namespace PlusSize.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class BlogsController : Controller
     {
-        private IAdminService service;
+        private IAdminBlogsService service;
         private IBlogsService blogService;
         private ApplicationUserManager _userManager;
 
-        public BlogsController(IAdminService service, IBlogsService blogService)
+        public BlogsController(IAdminBlogsService service, IBlogsService blogService)
         {
             this.service = service;
             this.blogService = blogService;
@@ -62,6 +62,7 @@ namespace PlusSize.Areas.Admin.Controllers
             };
             return this.View(vm);
         }
+
         [HttpPost]
         [Route("add")]
         public ActionResult Add(AddBlogBm bm)
@@ -87,6 +88,7 @@ namespace PlusSize.Areas.Admin.Controllers
                 return this.View(vm);
             }
         }
+
         [HttpGet]
         [Route("edit/{id:int}")]
         public ActionResult Edit(int id)

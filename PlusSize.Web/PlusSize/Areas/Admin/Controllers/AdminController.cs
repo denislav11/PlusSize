@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 using PlusSize.Models.ViewModels.Account;
 using PlusSize.Models.ViewModels.Admin;
-using PlusSize.Services;
-using PlusSize.Services.Interfaces;
+using PlusSize.Services.Interfaces.Admin;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
@@ -103,10 +102,6 @@ namespace PlusSize.Areas.Admin.Controllers
                     return View(model);
             }
         }
-
-
-
-
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))

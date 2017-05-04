@@ -61,13 +61,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminBlogsService.cs" />
+    <Compile Include="AdminCategoriesService.cs" />
+    <Compile Include="AdminOrdersService.cs" />
+    <Compile Include="AdminProductsService.cs" />
     <Compile Include="AdminService.cs" />
     <Compile Include="BlogsService.cs" />
     <Compile Include="CartService.cs" />
     <Compile Include="CategoryService.cs" />
     <Compile Include="CheckoutService.cs" />
     <Compile Include="HomeService.cs" />
-    <Compile Include="Interfaces\IAdminService.cs" />
+    <Compile Include="Interfaces\Admin\IAdminBlogsService.cs" />
+    <Compile Include="Interfaces\Admin\IAdminCategoriesService.cs" />
+    <Compile Include="Interfaces\Admin\IAdminOrdersService.cs" />
+    <Compile Include="Interfaces\Admin\IAdminProductsService.cs" />
+    <Compile Include="Interfaces\Admin\IAdminService.cs" />
     <Compile Include="Interfaces\ICartService.cs" />
     <Compile Include="Interfaces\IBlogsService.cs" />
     <Compile Include="Interfaces\ICategoryService.cs" />

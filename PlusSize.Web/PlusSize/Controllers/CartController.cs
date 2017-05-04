@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using PlusSize.Models.EntityModels;
 using PlusSize.Models.ViewModels.Cart;
-using PlusSize.Services;
 using PlusSize.Services.Interfaces;
 using System.Linq;
 using System.Web.Mvc;

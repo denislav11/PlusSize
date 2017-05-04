@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using PlusSize.Services;
 using PlusSize.Models.ViewModels.Admin;
 using PlusSize.Models.BindingModels.Admin;
-using PlusSize.Services.Interfaces;
+using PlusSize.Services.Interfaces.Admin;
+using System.Data.Entity.Validation;
+using System.Linq;
 
 namespace PlusSize.Areas.Admin.Controllers
 {
@@ -12,9 +13,9 @@ namespace PlusSize.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class CategoriesController : Controller
     {
-        private IAdminService service;
+        private IAdminCategoriesService service;
 
-        public CategoriesController(IAdminService service)
+        public CategoriesController(IAdminCategoriesService service)
         {
             this.service = service;
         }
@@ -42,8 +43,17 @@ namespace PlusSize.Areas.Admin.Controllers
             {
                 return View(bm);
             }
-            this.service.AddCategory(bm);
-            return RedirectToAction("all");
+            try
+            {
+                this.service.AddCategory(bm);
+                return RedirectToAction("all");
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var error = ex.EntityValidationErrors.First().ValidationErrors.First();
+                this.ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                return this.View();
+            }
         }
         [HttpGet]
         [Route("edit/{id:int}")]
@@ -60,8 +70,17 @@ namespace PlusSize.Areas.Admin.Controllers
             {
                 return this.View(bm);
             }
-            this.service.EditCategory(bm, id);
-            return RedirectToAction("all");
+            try
+            {
+                this.service.EditCategory(bm, id);
+                return RedirectToAction("all");
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var error = ex.EntityValidationErrors.First().ValidationErrors.First();
+                this.ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                return this.View();
+            }
         }
         [HttpGet]
         [Route("delete/{id:int}")]

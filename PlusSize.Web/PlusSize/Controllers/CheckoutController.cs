@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using PlusSize.Models.BindingModels.Checkout;
 using PlusSize.Models.EntityModels;
-using PlusSize.Services;
 using PlusSize.Services.Interfaces;
 using System.Data.Entity.Validation;
 using System.Linq;

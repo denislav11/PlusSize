@@ -7,7 +7,6 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PlusSize.Models.ViewModels.Account;
 using PlusSize.Models.EntityModels;
-using PlusSize.Services;
 using PlusSize.Services.Interfaces;
 
 namespace PlusSize.Controllers

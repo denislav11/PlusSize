@@ -365,7 +365,6 @@
     <Content Include="Views\Checkout\Success.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\View.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\All.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />

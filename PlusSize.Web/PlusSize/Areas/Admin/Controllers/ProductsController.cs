@@ -2,8 +2,7 @@
 using PlusSize.Models.ViewModels.Admin;
 using PlusSize.Models.ViewModels.Category;
 using PlusSize.Models.ViewModels.Products;
-using PlusSize.Services;
-using PlusSize.Services.Interfaces;
+using PlusSize.Services.Interfaces.Admin;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
@@ -16,8 +15,8 @@ namespace PlusSize.Areas.Admin.Controllers
     [Authorize(Roles="Admin")]
     public class ProductsController : Controller
     {
-        private IAdminService service;
-        public ProductsController(IAdminService service)
+        private IAdminProductsService service;
+        public ProductsController(IAdminProductsService service)
         {
             this.service = service;
         }

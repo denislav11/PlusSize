@@ -12,21 +12,22 @@ namespace PlusSize.App_Start
     using Ninject.Web.Common;
     using Services.Interfaces;
     using Services;
+    using Services.Interfaces.Admin;
 
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -34,7 +35,7 @@ namespace PlusSize.App_Start
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -63,7 +64,6 @@ namespace PlusSize.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IAdminService>().To<AdminService>();
             kernel.Bind<IBlogsService>().To<BlogsService>();
             kernel.Bind<ICartService>().To<CartService>();
             kernel.Bind<ICategoryService>().To<CategoryService>();
@@ -71,6 +71,13 @@ namespace PlusSize.App_Start
             kernel.Bind<IHomeService>().To<HomeService>();
             kernel.Bind<IProductsService>().To<ProductsService>();
             kernel.Bind<IUserService>().To<UserService>();
-        }        
+
+
+            kernel.Bind<IAdminService>().To<AdminService>();
+            kernel.Bind<IAdminOrdersService>().To<AdminOrdersService>();
+            kernel.Bind<IAdminProductsService>().To<AdminProductsService>();
+            kernel.Bind<IAdminBlogsService>().To<AdminBlogsService>();
+            kernel.Bind<IAdminCategoriesService>().To<AdminCategoriesService>();
+        }
     }
 }

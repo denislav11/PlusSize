@@ -5,10 +5,7 @@
     Layout = null;
 }
 @Html.Partial("_Header")
-
 @Html.Partial("_LeftMenu")
-
-
 
 <h2>Delete</h2>
 <h3>Are you sure you want to delete this?</h3>
@@ -18,26 +15,23 @@
             <div class="content-box-large">
                 <div class="panel-heading">
                     <div>
-                        <h4>Product</h4>
+                        <h4>Category</h4>
                         <hr />
                         <dl class="dl-horizontal">
                             <dt>
                                 @Html.DisplayNameFor(model => model.Title)
                             </dt>
-
                             <dd>
                                 @Html.DisplayFor(model => model.Title)
                             </dd>
                         </dl>
-
                         @using (Html.BeginForm("Delete", "Blogs", FormMethod.Post, new { id = Model.Id }))
                         {
                             @Html.AntiForgeryToken()
 
                             <div class="form-actions no-color">
-                                @Html.ActionLink("Back to List", "Index")             |
+                                @Html.ActionLink("Back to List", "All")             |
                                 <input type="submit" value="Delete" class="btn btn-danger" />
-
                             </div>
                         }
                     </div>
