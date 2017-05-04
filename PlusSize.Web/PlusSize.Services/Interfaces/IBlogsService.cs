@@ -19,7 +19,7 @@ namespace PlusSize.Services.Interfaces
 
         void EditCategory(BlogsCategoriesAdminVm bm, int id);
 
-        BlogsCategoriesAdminVm GetDeletedCategoryById(int id);
+        BlogsCategoriesAdminVm GetDeletedCategoryById(int? id);
 
         void DeleteCategory(int id);
     }

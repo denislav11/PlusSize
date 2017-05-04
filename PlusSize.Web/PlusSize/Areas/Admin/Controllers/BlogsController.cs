@@ -10,6 +10,7 @@ using PlusSize.Models.BindingModels.Admin;
 using System.Data.Entity.Validation;
 using PlusSize.Services.Interfaces;
 using PlusSize.Services.Interfaces.Admin;
+using System.Net;
 
 namespace PlusSize.Areas.Admin.Controllers
 {
@@ -120,9 +121,18 @@ namespace PlusSize.Areas.Admin.Controllers
         }
         [HttpGet]
         [Route("delete/{id:int}")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             DeleteBlogVm vm = this.service.GetDeletedBlogById(id);
+
+            if (vm==null)
+            {
+                return HttpNotFound();
+            }
             return this.View(vm);
         }
         [HttpPost]

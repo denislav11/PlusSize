@@ -10,38 +10,38 @@ namespace PlusSize.Data.Migrations
             AutomaticMigrationsEnabled = true;
             ContextKey = "PlusSize.Data.PlusSizeContext";
         }
-        //    protected override void Seed(PlusSizeContext context)
-        //    {
-        //        context.Categories.AddOrUpdate(ent => ent.Title,
-        //            new Category[]
-        //            {
-        //                new Category
-        //                {
-        //                    Title="Jeans"
-        //                },
-        //                new Category
-        //                {
-        //                    Title="Shorts"
-        //                } , new Category
-        //                {
-        //                    Title="Skirts"
-        //                },
-        //                new Category
-        //                {
-        //                    Title="Swimwear"
-        //                },  new Category
-        //                {
-        //                    Title="Tops"
-        //                },
-        //                new Category
-        //                {
-        //                    Title="Trousers"
-        //                },
-        //                new Category
-        //                {
-        //                    Title="Coats"
-        //                }
-        //        });
+        protected override void Seed(PlusSizeContext context)
+        {
+            //context.Categories.AddOrUpdate(ent => ent.Title,
+            //    new Category[]
+            //    {
+            //        new Category
+            //        {
+            //            Title="Jeans"
+            //        },
+            //        new Category
+            //        {
+            //            Title="Shorts"
+            //        } , new Category
+            //        {
+            //            Title="Skirts"
+            //        },
+            //        new Category
+            //        {
+            //            Title="Swimwear"
+            //        },  new Category
+            //        {
+            //            Title="Tops"
+            //        },
+            //        new Category
+            //        {
+            //            Title="Trousers"
+            //        },
+            //        new Category
+            //        {
+            //            Title="Coats"
+            //        }
+            //});
         //        context.Products.AddOrUpdate(ent => ent.Title,
         //        new Product[]
         //        {
@@ -62,6 +62,6 @@ namespace PlusSize.Data.Migrations
         //                     Title = "First Maxi Dress",
         //                     Description="we are strong jean factory, doing jeans for more than 15 years, have 200 workers."
         //            }});
-        //    }
+            }
     }
 }

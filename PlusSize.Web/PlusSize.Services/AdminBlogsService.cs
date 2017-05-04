@@ -53,7 +53,7 @@ namespace PlusSize.Services
             this.Context.Blogs.Add(model);
             this.Context.SaveChanges();
         }
-        public DeleteBlogVm GetDeletedBlogById(int id)
+        public DeleteBlogVm GetDeletedBlogById(int? id)
         {
             Blog model = this.Context.Blogs.Find(id);
             DeleteBlogVm vm = Mapper.Instance.Map<Blog, DeleteBlogVm>(model);

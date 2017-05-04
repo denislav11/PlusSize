@@ -10,7 +10,7 @@ namespace PlusSize.Services
 {
     public class ProductsService : Service,IProductsService
     {
-        public ProductVm GetProductById(int id)
+        public ProductVm GetProductById(int? id)
         {
             Product model = this.Context.Products.Find(id);
             ProductVm vm = Mapper.Instance.Map<Product, ProductVm>(model);

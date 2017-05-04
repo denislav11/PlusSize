@@ -3,6 +3,7 @@ using PlusSize.Services.Interfaces;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 
 namespace PlusSize.Areas.Admin.Controllers
@@ -42,7 +43,7 @@ namespace PlusSize.Areas.Admin.Controllers
             try
             {
                 this.service.AddCategory(bm);
-                return RedirectToAction("all");
+                return RedirectToAction("All");
             }
             catch (DbEntityValidationException ex)
             {
@@ -50,7 +51,6 @@ namespace PlusSize.Areas.Admin.Controllers
                 this.ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
                 return this.View();
             }
-
         }
         [HttpGet]
         [Route("edit/{id:int}")]
@@ -72,9 +72,18 @@ namespace PlusSize.Areas.Admin.Controllers
         }
         [HttpGet]
         [Route("delete/{id:int}")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             BlogsCategoriesAdminVm vm = this.service.GetDeletedCategoryById(id);
+
+            if (vm == null)
+            {
+                return HttpNotFound();
+            }
             return this.View(vm);
         }
         [HttpPost]
@@ -84,5 +93,6 @@ namespace PlusSize.Areas.Admin.Controllers
             this.service.DeleteCategory(id);
             return this.RedirectToAction("all");
         }
+
     }
 }

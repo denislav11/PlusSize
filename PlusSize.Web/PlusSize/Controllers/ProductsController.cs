@@ -4,6 +4,7 @@ using PlusSize.Models.ViewModels.Products;
 using PlusSize.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -20,8 +21,12 @@ namespace PlusSize.Controllers
         }
         [HttpGet]
         [Route("{id:int}")]
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
+            if (id==null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             ProductVm vm = this.service.GetProductById(id);
             if (!this.ModelState.IsValid || vm == null)
             {

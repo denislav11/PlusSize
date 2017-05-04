@@ -35,8 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.9.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.9\lib\net45\Moq.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -85,8 +93,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Controllers\AdminBlogsCategoriesControllerTests.cs" />
+    <Compile Include="Controllers\AdminControllerTests.cs" />
+    <Compile Include="Controllers\AdminProductsControllerTests.cs" />
     <Compile Include="Controllers\HomeControllerTests.cs" />
-    <Compile Include="Controllers\ProductsControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -98,6 +108,10 @@
     <ProjectReference Include="..\PlusSize.Models\PlusSize.Models.csproj">
       <Project>{E1ECDBAC-2016-4153-AA08-B0F2B2DDBF15}</Project>
       <Name>PlusSize.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PlusSize.Services\PlusSize.Services.csproj">
+      <Project>{BBE0DBA0-DF67-4723-AEBF-7376272E3490}</Project>
+      <Name>PlusSize.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\PlusSize\PlusSize.Web.csproj">
       <Project>{C2153646-7206-4446-91D9-A5052FCA2D90}</Project>

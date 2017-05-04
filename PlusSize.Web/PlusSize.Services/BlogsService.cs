@@ -70,7 +70,7 @@ namespace PlusSize.Services
             this.Context.SaveChanges();
         }
 
-        public BlogsCategoriesAdminVm GetDeletedCategoryById(int id)
+        public BlogsCategoriesAdminVm GetDeletedCategoryById(int? id)
         {
             BlogCategory model = this.Context.BlogCategories.Find(id);
             BlogsCategoriesAdminVm vm =
