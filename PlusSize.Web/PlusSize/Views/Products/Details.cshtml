@@ -1,10 +1,8 @@
 ﻿@model PlusSize.Models.ViewModels.Products.ProductVm
-
-@{ 
+@{
     ViewBag.Title = Model.Title;
 }
 @Styles.Render("~/Content/Products/Product.css")
-
 <br />
 <br />
 <div class="container">
@@ -17,15 +15,112 @@
             <h6 class="title-price"><small>Price</small></h6>
             <h3 style="margin-top:0px;">$@Model.Price</h3>
             @Html.Partial("_BuyButton")
+            @using (Html.BeginForm("FastOrder", "Account", FormMethod.Post, new { id = Model.Id }))
+            {
+                <div class="panel panel-info">
+                    <div class="panel-heading">Fast Order</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <strong>Name:</strong>
+                                <input type="text" name="Name" class="form-control" />
+                            </div>
+                            <div class="span1"></div>
+                        </div>
+                        <br /><br /><br />
+                        <div class="form-group">
+                            <div class="col-md-12"><strong>Address:</strong></div>
+                            <div class="col-md-12">
+                                <input type="text" name="Adress" class="form-control" />
+                            </div>
+                        </div>
+                        <br /><br /><br />
+                        <div class="form-group">
+                            <div class="col-md-12"><strong>Phone Number:</strong></div>
+                            <div class="col-md-12"><input type="text" name="PhoneNumber" class="form-control" /></div>
+                        </div>
+                        <br /><br /><br />
+                    </div>
+                </div><div class="form-group">
+                    <div class="col-md-offset-10 col-md-10">
+                        <input type="submit" class="btn btn-primary btn-lg" value="Order" />
+                    </div>
+                </div>
+            }
         </div>
-        <div class="col-xs-9">
-            <ul class="menu-items">
-                <li class="active">Description</li>
+
+        <div class="col-md-12 product-info">
+            <ul id="myTab" class="nav nav-tabs nav_tabs">
+
+                <li class="active"><a href="#service-one" data-toggle="tab">Description</a></li>
+                <li><a href="#service-two" data-toggle="tab">Comments</a></li>
+
             </ul>
-            <div style="width:100%;border-top:1px solid silver">
-                <p style="padding:15px;">
-                <p>@Model.Description</p>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="service-one">
+
+                    <section class="container product-info">
+                        @Model.Description
+                    </section>
+
+                </div>
+                <div class="tab-pane fade" id="service-two">
+
+                    <section class="container">
+                        @foreach (var item in Model.Comments)
+                        {
+                            <div class="col-md-10 col-sm-10">
+                                <div class="panel panel-default arrow left">
+                                    <div class="panel-body">
+                                        <header class="text-left">
+                                            <div class="comment-user">
+                                                <i class="fa fa-user"></i>
+                                                <h4>@item.Author</h4>
+                                            </div>
+                                            <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> @item.DataAdded</time>
+                                        </header>
+                                        <div class="comment-post">
+                                            <p>
+                                                <h5>
+                                                    @item.Content
+                                                </h5>
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <br />
+                        @using (Html.BeginForm("Add", "Comments", FormMethod.Post, new { id = Model.Id }))
+                        {
+                            <div class="form-group">
+
+                                <input type="text" class="form-control" name="Author" />
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Comment:</label>
+                                <textarea class="form-control" rows="5" name="content"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success" value="Submit" />
+                            </div>
+                        }
+                    </section>
+                </div>
             </div>
+            <hr>
         </div>
+
+        @*<div class="col-xs-9">
+                <ul class="menu-items">
+                    <li class="active">Description</li>
+                </ul>
+                <div style="width:100%;border-top:1px solid silver">
+                    <p style="padding:15px;">
+                    <p>@Model.Description</p>
+                </div>
+            </div>*@
     </div>
 </div>

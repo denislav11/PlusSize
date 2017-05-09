@@ -71,7 +71,7 @@ namespace PlusSize.App_Start
             kernel.Bind<IHomeService>().To<HomeService>();
             kernel.Bind<IProductsService>().To<ProductsService>();
             kernel.Bind<IUserService>().To<UserService>();
-
+            kernel.Bind<ICommentsService>().To<CommentsService>();
 
             kernel.Bind<IAdminService>().To<AdminService>();
             kernel.Bind<IAdminOrdersService>().To<AdminOrdersService>();

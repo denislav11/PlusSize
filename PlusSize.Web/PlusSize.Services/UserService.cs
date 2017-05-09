@@ -2,10 +2,12 @@
 using System.Linq;
 using Microsoft.AspNet.Identity.EntityFramework;
 using PlusSize.Services.Interfaces;
+using PlusSize.Models.BindingModels.Products;
+using System;
 
 namespace PlusSize.Services
 {
-    public class UserService : Service,IUserService
+    public class UserService : Service, IUserService
     {
         public void Buy(int id, string strCurrentUserId)
         {
@@ -22,6 +24,22 @@ namespace PlusSize.Services
                 return;
             }
             cart.Products.Add(product);
+            this.Context.SaveChanges();
+        }
+
+        public void FastOrder(FastOrderBm bm, int id)
+        {
+            Product product = this.Context.Products.Find(id);
+            Order order = new Order
+            {
+                DataAdded = DateTime.Now,
+                Adress = bm.Adress,
+                Name = bm.Name,
+                PhoneNumber = bm.PhoneNumber,
+                SumTotal = product.Price
+            };
+            order.Products.Add(product);
+            this.Context.Orders.Add(order);
             this.Context.SaveChanges();
         }
 

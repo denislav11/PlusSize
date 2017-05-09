@@ -8,6 +8,7 @@ using Microsoft.Owin.Security;
 using PlusSize.Models.ViewModels.Account;
 using PlusSize.Models.EntityModels;
 using PlusSize.Services.Interfaces;
+using PlusSize.Models.BindingModels.Products;
 
 namespace PlusSize.Controllers
 {
@@ -112,7 +113,23 @@ namespace PlusSize.Controllers
             this.service.Buy(id, strCurrentUserId);
             return Redirect("/checkout");
         }
-
+        [HttpGet]
+        [Route("fastOrder/{id:int}")]
+        public ActionResult FastOrder(int id)
+        {
+            return this.RedirectToAction("Details", new { id = id });
+        }
+        [HttpPost]
+        [Route("fastOrder/{id:int}")]
+        public ActionResult FastOrder(FastOrderBm bm, int id)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(id);
+            }
+            this.service.FastOrder(bm, id);
+            return this.Redirect("/Checkout/Success");
+        }
         //
         // POST: /Account/VerifyCode
         [HttpPost]

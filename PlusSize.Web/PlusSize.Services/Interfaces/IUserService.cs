@@ -1,4 +1,5 @@
-﻿using PlusSize.Models.EntityModels;
+﻿using PlusSize.Models.BindingModels.Products;
+using PlusSize.Models.EntityModels;
 
 namespace PlusSize.Services.Interfaces
 {
@@ -7,5 +8,6 @@ namespace PlusSize.Services.Interfaces
         void Buy(int id, string strCurrentUserId);
 
         bool IsFirstUser(ApplicationUser user);
+        void FastOrder(FastOrderBm bm, int id);
     }
 }

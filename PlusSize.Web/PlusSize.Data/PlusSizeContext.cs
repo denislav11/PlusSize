@@ -16,6 +16,7 @@ namespace PlusSize.Data
         public DbSet<Cart> Carts { get; set; }
         public DbSet<BlogCategory> BlogCategories { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public static PlusSizeContext Create()
         {
             return new PlusSizeContext();

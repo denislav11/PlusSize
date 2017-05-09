@@ -70,6 +70,7 @@
     <Compile Include="CartService.cs" />
     <Compile Include="CategoryService.cs" />
     <Compile Include="CheckoutService.cs" />
+    <Compile Include="CommentsService.cs" />
     <Compile Include="HomeService.cs" />
     <Compile Include="Interfaces\Admin\IAdminBlogsService.cs" />
     <Compile Include="Interfaces\Admin\IAdminCategoriesService.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Interfaces\IBlogsService.cs" />
     <Compile Include="Interfaces\ICategoryService.cs" />
     <Compile Include="Interfaces\ICheckoutService.cs" />
+    <Compile Include="Interfaces\ICommentsService.cs" />
     <Compile Include="Interfaces\IHomeService.cs" />
     <Compile Include="Interfaces\IProductsService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
