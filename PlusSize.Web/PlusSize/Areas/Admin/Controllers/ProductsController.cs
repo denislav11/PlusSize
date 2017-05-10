@@ -6,13 +6,14 @@ using PlusSize.Services.Interfaces.Admin;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace PlusSize.Areas.Admin.Controllers
 {
     [RouteArea("admin")]
     [RoutePrefix("products")]
-    [Authorize(Roles="Admin")]
+    [Authorize(Roles = "Admin")]
     public class ProductsController : Controller
     {
         private IAdminProductsService service;
@@ -44,7 +45,7 @@ namespace PlusSize.Areas.Admin.Controllers
 
         [HttpPost]
         [Route("add")]
-        public ActionResult Add(AddProductBm bm)
+        public ActionResult Add(AddProductBm bm, HttpPostedFileBase image)
         {
             if (!this.ModelState.IsValid)
             {
@@ -52,6 +53,25 @@ namespace PlusSize.Areas.Admin.Controllers
             }
             try
             {
+                string imagePath = "";
+                if (image != null)
+                {
+                    var allowedTypes = new[] { "image/jpeg", "image/jpg", "image/png" };
+                    if (allowedTypes.Contains(image.ContentType))
+                    {
+                        var imagesPath = "/Content/Images/";
+
+                        var fileName = image.FileName;
+
+                        var uploadPath = imagesPath + fileName;
+
+                        var psihicalPath = Server.MapPath(uploadPath);
+
+                        image.SaveAs(psihicalPath);
+
+                        bm.ImageUrl = uploadPath;
+                    }
+                }
                 this.service.AddProduct(bm);
                 return RedirectToAction("all");
             }
@@ -68,7 +88,7 @@ namespace PlusSize.Areas.Admin.Controllers
 
                 return View(vm);
             }
-         
+
         }
         [HttpGet]
         [Route("edit/{id:int}")]
@@ -104,7 +124,7 @@ namespace PlusSize.Areas.Admin.Controllers
                 vm.Categories = categories;
                 return this.View(vm);
             }
-           
+
         }
         [HttpGet]
         [Route("delete/{id:int}")]
@@ -114,7 +134,7 @@ namespace PlusSize.Areas.Admin.Controllers
             return this.View(vm);
         }
         [HttpPost]
-        [Route("delete/{id:int}"),ActionName("Delete")]
+        [Route("delete/{id:int}"), ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
             this.service.DeleteProduct(id);

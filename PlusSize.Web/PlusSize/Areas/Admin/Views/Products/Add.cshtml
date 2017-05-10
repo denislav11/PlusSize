@@ -1,19 +1,16 @@
 ﻿@model PlusSize.Models.ViewModels.Admin.AddProcuctVm
-
 @{
     Layout = null;
 }
 @Html.Partial("_Header")
-
 @Html.Partial("_LeftMenu")
-
 
 <div class="col-md-10">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="content-box-large">
                 <div class="panel-heading">
-                    @using (Html.BeginForm("Add", "Products", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    @using (Html.BeginForm("Add", "Products", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
                         <h4>Create a new product.</h4>
@@ -39,12 +36,7 @@
                                 @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
                             </div>
                         </div>
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.ImageUrl, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
-                            </div>
-                        </div>
+                      
                         <div class="form-group">
                             @Html.LabelFor(m => m.Price, new { @class = "col-md-2 control-label" })
                             <div class="col-md-10">
@@ -57,6 +49,14 @@
                                 @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            @Html.Label("image", "Image", new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBox("image", null, new { type = "file", @class = "form-control" })
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             @Html.LabelFor(model => model.Categories, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">

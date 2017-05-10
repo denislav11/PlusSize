@@ -32,5 +32,6 @@ namespace PlusSize.Models.EntityModels
         public virtual ICollection<Cart> Carts { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+        
     }
 }

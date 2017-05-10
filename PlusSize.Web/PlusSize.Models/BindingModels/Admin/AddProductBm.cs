@@ -18,5 +18,6 @@ namespace PlusSize.Models.BindingModels.Admin
         public string Description { get; set; }
 
         public string Category { get; set; }
+        
     }
 }
