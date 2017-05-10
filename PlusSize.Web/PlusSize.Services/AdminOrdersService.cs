@@ -18,6 +18,10 @@ namespace PlusSize.Services
         public void DeleteOrder(int id)
         {
             Order order = this.Context.Orders.Find(id);
+            foreach (var product in order.Products)
+            {
+                order.Products.Remove(product);
+            }
             this.Context.Orders.Remove(order);
             this.Context.SaveChanges();
         }

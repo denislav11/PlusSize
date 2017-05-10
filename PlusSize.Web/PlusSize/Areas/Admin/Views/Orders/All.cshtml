@@ -19,7 +19,7 @@
                             <th>Name</th>
                             <th>Data Added</th>
                             <th>Sum Total</th>
-                            <th>Delete</th>
+                            <th>Action</th>
                     </thead>
                     <tbody>
                         @foreach (var order in Model)
@@ -29,10 +29,7 @@
                                 <td>@order.Name</td>
                                 <td>@order.DataAdded</td>
                                 <td>@order.SumTotal</td>
-                                <td>
-                                    @Html.ActionLink(" ", "Delete", "Orders", new { id = order.Id, areas = "Admin" },
-                                   new { @class = "glyphicon glyphicon-trash btn btn-danger btn-xs" })
-                                </td>
+                                <td>@Html.ActionLink("View", "View", "Orders", new { id = order.Id }, null)</td>
                             </tr>
                         }
                     </tbody>

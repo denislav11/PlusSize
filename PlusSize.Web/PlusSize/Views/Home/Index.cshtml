@@ -1,9 +1,8 @@
 ﻿@using PlusSize.Models.ViewModels.Home
 @model IEnumerable<ProductInHomeVm>
-@{ 
+@{
     ViewBag.Title = "Home";
 }
-
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
@@ -20,7 +19,7 @@
             season after season. Dare to be different with the exclusive collection from Nadia Aboulhosn
             that’s guaranteed to keep your style game strong whatever the occasion.
         </p>
-        </div>
+    </div>
     <div class="col-md-4">
         <h2>About us</h2>
         <p>
@@ -28,7 +27,7 @@
 
             With a goal to become an $8 billion company by 2017 and open 600 stores in the next three years, it’ll be exciting to see the company achieve in three years what it initially took 30 years to do.
         </p>
-         </div>
+    </div>
     <div class="col-md-4">
         <h2>careers at Plus Size</h2>
         <p>
@@ -37,32 +36,27 @@
             If you have what it takes, check our Current Openings below or stop by any of our stores and fill out an application today.
             Be sure to check back frequently as opportunities change daily.
         </p>
-        
+
     </div>
 </div>
 <br />
 <br />
-<div class="row">
-    @foreach (var product in Model)
-    {
-        <div class="col-sm-25 col-xs-2 col-xs-offset-1">
-            <!-- Product -->
-            <div class="product clearfix ">
-                <div class="left">
-                    <div class="image">
-                        <img src="@product.ImageUrl" height="316" width="212">
-                    </div>
-                </div>
-                <div class="right">
-                    <div class="name">
-                        @Html.ActionLink(product.Title, "Details", "Products", new { id = product.Id }, null)
-                        <div class="price">
-                            @product.Price
-                        </div>
-                    </div>
+@foreach (var product in Model)
+{
+    <div class="item  col-xs-4 col-lg-4">
+        <!-- Product -->
+        <div class="product clearfix ">
+            <div class="left">
+                <div class="image">
+                    <img src="@product.ImageUrl" height="316" width="212">
                 </div>
             </div>
+            <br />
+            <div class="right">
+                <h4 class="group inner list-group-item-heading">
+                    @Html.ActionLink(product.Title, "Details", "Products", new { id = product.Id }, null)
+                </h4>
+            </div>
         </div>
-       
-    }
-</div>
+    </div>
+}

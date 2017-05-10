@@ -2,6 +2,8 @@
 @{
     Layout = null;
 }
+@Styles.Render("~/Content/Admin/Products.css")
+
 @Html.Partial("_Header")
 @Html.Partial("_LeftMenu")
 
@@ -36,7 +38,7 @@
                                 @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
                             </div>
                         </div>
-                      
+
                         <div class="form-group">
                             @Html.LabelFor(m => m.Price, new { @class = "col-md-2 control-label" })
                             <div class="col-md-10">
@@ -53,7 +55,9 @@
                         <div class="form-group">
                             @Html.Label("image", "Image", new { @class = "col-md-2 control-label" })
                             <div class="col-md-10">
-                                @Html.TextBox("image", null, new { type = "file", @class = "form-control" })
+                                <label class="btn btn-default btn-file">
+                                    Browse <input type="file" hidden name="image">
+                                </label>
                             </div>
                         </div>
 
